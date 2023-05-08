@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 2115088839}
+    - target: {fileID: 2056400574080190568, guid: 264caa5cd0197204a81fcdc33666dde9, type: 3}
+      propertyPath: activarMovimiento
+      value: 
+      objectReference: {fileID: 1188221526}
     - target: {fileID: 2056400574080190571, guid: 264caa5cd0197204a81fcdc33666dde9, type: 3}
       propertyPath: m_Name
       value: Camera
@@ -1850,6 +1854,7 @@ MonoBehaviour:
   jumpForce: 1
   radio: 0.35
   activo: 0
+  movimiento: 0
   checkGround: {fileID: 660800791}
   Ground:
     serializedVersion: 2

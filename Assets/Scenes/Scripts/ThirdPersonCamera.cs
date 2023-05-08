@@ -13,11 +13,11 @@ public class ThirdPersonCamera : MonoBehaviour
     public float maxDistance;
     public Vector2 sensitivity;
 
-    PlayerMovement activarMovimiento;
+     public PlayerMovement activarMovimiento;
 
     private void Start()
     {
-        activarMovimiento= GetComponent<PlayerMovement>();
+        activarMovimiento.movimiento = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         camera = GetComponent<Camera>();

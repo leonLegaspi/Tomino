@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float radio;
     private bool isTouching;
     public bool activo;
+    public bool movimiento = false;
 
     private float gravity = -11.8f;
   
@@ -33,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(movimiento);
+        if(movimiento)
         Movimiento();
 
         if(Input.GetKeyDown(KeyCode.Alpha3))
@@ -40,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene(3);
         }
 
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
