@@ -2,8 +2,6 @@ using UnityEngine;
 public class LogicaEnemigo : MonoBehaviour
 {
     private Animator animatorEnemigo;
-    private float secuencia;
-    private int contador;
     private bool iniciarEnemigo;
     [SerializeField] private BoxCollider BoxCollider;
 

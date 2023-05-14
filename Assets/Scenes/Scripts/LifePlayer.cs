@@ -30,7 +30,7 @@ public class LifePlayer : MonoBehaviour
             SceneManager.LoadScene(2);
 
         Debug.Log(a);
-        a -= 0.0001f;
+        a -= 0.0003f;
         a = Mathf.Clamp(a, 0, 1f);
         ChangeColor();
     }
