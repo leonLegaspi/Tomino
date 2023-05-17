@@ -54,11 +54,11 @@ public class ThirdPersonCamera : MonoBehaviour
                 distance = Mathf.Min((hit.point - follow.position).magnitude, distance);    
             }
         }
-
+        
         transform.position = follow.position + direction * distance;
         transform.rotation = Quaternion.LookRotation(follow.position - transform.position);
     }
-
+ 
     private void CalculateNearPlaneSize()
     {
         float height = Mathf.Tan(camera.fieldOfView * Mathf.Rad2Deg/2) * camera.nearClipPlane;
@@ -66,7 +66,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         nearPlaneSize = new Vector2(width, height);
     }
-
+   
     private Vector3[] GetCameraCollisionPoints(Vector3 direction)
     {
         Vector3 position = follow.position;
@@ -82,5 +82,5 @@ public class ThirdPersonCamera : MonoBehaviour
             center - right - up, 
             center + right - up 
         };
-    }
+    } 
 }
