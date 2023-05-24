@@ -35,7 +35,7 @@ public class PlayerMovementFisrtPerson : MonoBehaviour
     {
         //Check suelo
         _grounded = Physics.Raycast(grounCheck.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
+        Debug.DrawRay(grounCheck.position, Vector3.down, Color.red);
         MyInput();
         SpeedControl();
 
