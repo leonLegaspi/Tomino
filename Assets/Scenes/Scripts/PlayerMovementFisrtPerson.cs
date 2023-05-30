@@ -34,8 +34,7 @@ public class PlayerMovementFisrtPerson : MonoBehaviour
     private void Update()
     {
         //Check suelo
-        _grounded = Physics.Raycast(grounCheck.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        Debug.DrawRay(grounCheck.position, Vector3.down, Color.red);
+        _grounded = Physics.Raycast(grounCheck.position, Vector3.down, 0.2f, whatIsGround);
         MyInput();
         SpeedControl();
 
@@ -69,7 +68,7 @@ public class PlayerMovementFisrtPerson : MonoBehaviour
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         
         //Limito la velocidad
-        if(flatVel.magnitude > moveSpeed)
+        if(rb.velocity.magnitude > moveSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);

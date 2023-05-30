@@ -15,8 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float radio;
     private bool isTouching;
-    public bool activo;
-    public bool movimiento = false;
 
     private float gravity = -11.8f;
   
@@ -29,13 +27,11 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        Debug.Log(movimiento);
-        if(movimiento)
+        
         Movimiento();
 
         if(Input.GetKeyDown(KeyCode.Alpha3))
@@ -101,15 +97,16 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), suavizadoMovimiento);
         }
 
+        /*
         if (Input.GetButtonDown("Jump") && isTouching)
         {
             animator.SetBool("Saltar", isTouching);
             playerVelocity.y = Mathf.Sqrt(jumpForce * -3f * gravity);
         }
+        */
 
         characterController.Move(playerVelocity * Time.deltaTime);
         characterController.Move(movement);
 
-        animator.SetFloat("Speed", movementSpeed);
     }
 }
