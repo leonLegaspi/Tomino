@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 3cb63581d1629aa4da5c9ae71646f7f8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene 1.unity
     guid: 3b9acc8ad528eda49b328fd3d2e4a360
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Sala prueba 1.unity
     guid: 64c3df958a52e734fab75da44617fbbc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SalaTeleports.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/FirstPerson.unity
+    guid: c7c9c764a3b81424e9e5e990badfa4f7
   m_configObjects: {}
