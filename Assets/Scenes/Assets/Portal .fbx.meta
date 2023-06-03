@@ -1,17 +1,12 @@
 fileFormatVersion: 2
-guid: 6c9d158e96a209246a15db6857558528
+guid: b9984ba7d38c31d45a6f14f67abf792f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Lampara1
-    second: {fileID: 2100000, guid: abf4ec09a20429641a77bcf6fa760195, type: 2}
+  externalObjects: {}
   materials:
-    materialImportMode: 1
-    materialName: 1
+    materialImportMode: 2
+    materialName: 0
     materialSearch: 1
     materialLocation: 1
   animations:
