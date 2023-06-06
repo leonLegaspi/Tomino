@@ -6,7 +6,7 @@ public class LayerSensor : MonoBehaviour
 {
     private int contador;
     private bool entre;
-    [SerializeField] private PlayerMovement player;
+    [SerializeField] private MovPlayer player;
 
     private void OnTriggerEnter(Collider other)
     {
