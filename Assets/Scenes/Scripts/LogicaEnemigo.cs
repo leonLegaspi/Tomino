@@ -2,7 +2,6 @@ using UnityEngine;
 public class LogicaEnemigo : MonoBehaviour
 {
     private Animator animatorEnemigo;
-    private bool iniciarEnemigo;
     [SerializeField] private BoxCollider BoxCollider;
 
     [Header("Logica enemigo")]
@@ -10,7 +9,6 @@ public class LogicaEnemigo : MonoBehaviour
     private float cronometro;
     private Quaternion angulo;
     private float rotacion;
-    bool activo;
     public bool atacando;
     [SerializeField]private float speed;
 
@@ -25,22 +23,8 @@ public class LogicaEnemigo : MonoBehaviour
 
     private void Update()
     {
-        if(activo)
+       
         ComportamientoEnemigo();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            animatorEnemigo.SetBool("secuencia", true);
-        }
-    }
-    public void ActivarEnemigo()
-    {
-        iniciarEnemigo = true;
-        BoxCollider.enabled = false;
-        activo = true;
     }
 
     public void Idle()

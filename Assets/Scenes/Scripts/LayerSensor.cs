@@ -8,25 +8,5 @@ public class LayerSensor : MonoBehaviour
     private bool entre;
     [SerializeField] private MovPlayer player;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            contador++;
-            player.ContactCount(contador);
-            entre = true;
-            Debug.Log(contador);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground") && entre)
-        {
-            contador--;
-            player.ContactCount(contador);
-            entre = false;
-            Debug.Log(contador);
-        }
-    }
+   
 }

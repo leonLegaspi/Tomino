@@ -11,10 +11,12 @@ public class MovPlayer : MonoBehaviour
     private Animator animator;
 
     [SerializeField] private float velocidadDeMovimiento;
+    [SerializeField] private float velocidadSprint;
     [SerializeField] private float suavizadoMovimiento;
     [SerializeField] private float jumpForce;
     [SerializeField] private float radio;
     private bool isTouching;
+    
 
     private float gravity = -11.8f;
   
@@ -27,36 +29,16 @@ public class MovPlayer : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        velocidadSprint = velocidadDeMovimiento * velocidadSprint;
     }
 
     private void Update()
-    {
-        
+    {   
         Movimiento();
-
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SceneManager.LoadScene(3);
-        }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
-        }
-    }
-
-    public void ContactCount(int contador)
-    {
-        if(contador == 1)
-        {
-            isTouching = true;
-            animator.SetBool("Saltar", !isTouching);
-        }
-
-        if (contador == 0)
-        {
-            isTouching = false;
-            animator.SetBool("Saltar", !isTouching);
         }
     }
 
@@ -65,7 +47,7 @@ public class MovPlayer : MonoBehaviour
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 movement = Vector3.zero;
-        float movementSpeed = 0f;
+        float movementSpeed = 2;
 
         RaycastHit hit;
         Debug.DrawRay(checkGround.position, Vector3.down, Color.red);
@@ -78,7 +60,7 @@ public class MovPlayer : MonoBehaviour
             }
         }
 
-        if (hor != 0 || ver != 0)
+        if(hor != 0 || ver != 0)
         {
             Vector3 forward = camera.forward;
             forward.y = 0;
@@ -97,16 +79,7 @@ public class MovPlayer : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), suavizadoMovimiento);
         }
 
-        /*
-        if (Input.GetButtonDown("Jump") && isTouching)
-        {
-            animator.SetBool("Saltar", isTouching);
-            playerVelocity.y = Mathf.Sqrt(jumpForce * -3f * gravity);
-        }
-        */
-
         characterController.Move(playerVelocity * Time.deltaTime);
         characterController.Move(movement);
-
     }
 }
