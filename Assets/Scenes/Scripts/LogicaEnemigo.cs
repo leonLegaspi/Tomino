@@ -19,6 +19,7 @@ public class LogicaEnemigo : MonoBehaviour
     public NavMeshAgent agente;
     public float distanciaAtaque, radioVision;
 
+    [SerializeField] private LayerMask Ground;
     private void Start()
     {
         animatorEnemigo = GetComponent<Animator>();
@@ -39,9 +40,16 @@ public class LogicaEnemigo : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, targetPlayer.transform.position) > radioVision)
         {
-            agente.enabled = true;
+            agente.enabled = false;
             animatorEnemigo.SetBool("run", false);
             cronometro += 1 * Time.deltaTime;
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, Vector3.down, out hit))
+            {
+                if(hit.distance < 1f)
+                     angulo = Quaternion.Euler(0, 180, 0);
+            }
+
             if(cronometro >= 4)
             {
                rutina = Random.Range(0, 3);

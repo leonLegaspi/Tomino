@@ -4036,6 +4036,9 @@ MonoBehaviour:
   agente: {fileID: 1507898784}
   distanciaAtaque: 1
   radioVision: 7
+  Ground:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!4 &1507898782
 Transform:
   m_ObjectHideFlags: 0
@@ -5565,7 +5568,7 @@ GameObject:
   - component: {fileID: 2061975538}
   - component: {fileID: 2061975537}
   - component: {fileID: 2061975536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
