@@ -1,8 +1,8 @@
 using UnityEngine;
+using UnityEngine.AI;
 public class LogicaEnemigo : MonoBehaviour
 {
     private Animator animatorEnemigo;
-    [SerializeField] private BoxCollider BoxCollider;
 
     [Header("Logica enemigo")]
     private float rutina;
@@ -15,6 +15,10 @@ public class LogicaEnemigo : MonoBehaviour
     [SerializeField] private GameObject targetPlayer;
 
     public RangoEnemigo rango;
+
+    public NavMeshAgent agente;
+    public float distanciaAtaque, radioVision;
+
     private void Start()
     {
         animatorEnemigo = GetComponent<Animator>();
@@ -23,7 +27,6 @@ public class LogicaEnemigo : MonoBehaviour
 
     private void Update()
     {
-       
         ComportamientoEnemigo();
     }
 
@@ -34,8 +37,9 @@ public class LogicaEnemigo : MonoBehaviour
 
     private void ComportamientoEnemigo()
     {
-        if(Vector3.Distance(transform.position, targetPlayer.transform.position) > 5)
+        if(Vector3.Distance(transform.position, targetPlayer.transform.position) > radioVision)
         {
+            agente.enabled = true;
             animatorEnemigo.SetBool("run", false);
             cronometro += 1 * Time.deltaTime;
             if(cronometro >= 4)
@@ -70,29 +74,39 @@ public class LogicaEnemigo : MonoBehaviour
             lookpos.y = 0;
             var rotation = Quaternion.LookRotation(lookpos);
 
-            if(Vector3.Distance(transform.position, targetPlayer.transform.position) > 1 && !atacando)
+            agente.enabled = true;
+            agente.SetDestination(targetPlayer.transform.position);
+
+            if(Vector3.Distance(transform.position, targetPlayer.transform.position) > distanciaAtaque && !atacando)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
                 animatorEnemigo.SetBool("walk", false);
-
                 animatorEnemigo.SetBool("run", true);
-                transform.Translate(Vector3.forward * (speed * 1.7f) * Time.deltaTime);
-
-                animatorEnemigo.SetBool("attack", false);
             }
             else
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-                animatorEnemigo.SetBool("walk", false);
-                animatorEnemigo.SetBool("run", false);              
+                if(atacando)
+                {
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
+                    animatorEnemigo.SetBool("walk", false);
+                    animatorEnemigo.SetBool("ru", false);
+                }
             }
         }
+
+        if(atacando)
+        {
+            agente.enabled = false;
+        }
     }
-   
-    public void FinalAtacando()
+    
+    public void Final_Ani()
     {
-        animatorEnemigo.SetBool("attack", false);
+        if(Vector3.Distance(transform.position, targetPlayer.transform.position) > distanciaAtaque + 0.2f)
+        {
+            animatorEnemigo.SetBool("attack", false);
+        }
         atacando = false;
-        rango.GetComponent<CapsuleCollider>().enabled = true;     
+        rango.GetComponent<CapsuleCollider>().enabled = true;
     }
+      
 }

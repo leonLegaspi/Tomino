@@ -27,8 +27,8 @@ public class LifePlayer : MonoBehaviour
     private void Update()
     {
         if (a >= 1)
-            SceneManager.LoadScene(2);
-
+            SceneManager.LoadScene(1);
+        
         Debug.Log(a);
         a -= 0.0003f;
         a = Mathf.Clamp(a, 0, 1f);

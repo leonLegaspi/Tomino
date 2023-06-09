@@ -8,14 +8,11 @@ public class MovPlayer : MonoBehaviour
 {
     private CharacterController characterController;
     public new Transform camera;
-    private Animator animator;
 
     [SerializeField] private float velocidadDeMovimiento;
     [SerializeField] private float velocidadSprint;
     [SerializeField] private float suavizadoMovimiento;
-    [SerializeField] private float jumpForce;
     [SerializeField] private float radio;
-    private bool isTouching;
     
 
     private float gravity = -11.8f;
