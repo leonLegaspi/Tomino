@@ -23,6 +23,8 @@ public class MovPlayer : MonoBehaviour
 
     [SerializeField] private LayerMask Ground;
 
+    [SerializeField] private AudioSource caminar;
+
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -59,6 +61,7 @@ public class MovPlayer : MonoBehaviour
 
         if(hor != 0 || ver != 0)
         {
+            caminar.Play();
             Vector3 forward = camera.forward;
             forward.y = 0;
             forward.Normalize();

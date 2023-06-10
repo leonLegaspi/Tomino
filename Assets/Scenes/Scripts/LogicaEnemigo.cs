@@ -44,7 +44,8 @@ public class LogicaEnemigo : MonoBehaviour
             animatorEnemigo.SetBool("run", false);
             cronometro += 1 * Time.deltaTime;
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, Vector3.down, out hit))
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            if(Physics.Raycast(transform.position, Vector3.forward, out hit))
             {
                 if(hit.distance < 1f)
                      angulo = Quaternion.Euler(0, 180, 0);
@@ -96,7 +97,7 @@ public class LogicaEnemigo : MonoBehaviour
                 {
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                     animatorEnemigo.SetBool("walk", false);
-                    animatorEnemigo.SetBool("ru", false);
+                    animatorEnemigo.SetBool("run", false);
                 }
             }
         }
