@@ -24,6 +24,9 @@ public class MovPlayer : MonoBehaviour
     [SerializeField] private LayerMask Ground;
 
     [SerializeField] private AudioSource caminar;
+    [SerializeField] private AudioClip [] audioCaminar;
+
+   
 
     private void Start()
     {
@@ -61,7 +64,14 @@ public class MovPlayer : MonoBehaviour
 
         if(hor != 0 || ver != 0)
         {
-            caminar.Play();
+            int randomIndex = Random.Range(0, audioCaminar.Length);
+            AudioClip randomClip = audioCaminar[randomIndex];
+            if(!caminar.isPlaying)
+            {
+                caminar.clip = randomClip;
+                caminar.Play();
+            }
+            
             Vector3 forward = camera.forward;
             forward.y = 0;
             forward.Normalize();

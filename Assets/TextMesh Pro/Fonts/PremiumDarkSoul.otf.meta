@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 3b8c0be082b5ddf4e875b0eb876e8a2d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - PremiumDarkSoul
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9dc216632be94964dbc3d33ae568e6c3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

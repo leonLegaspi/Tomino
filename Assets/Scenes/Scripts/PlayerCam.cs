@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
+    [HideInInspector] public bool active = true;
+
     public  float     sensX;
     public  float     sensY;
 
@@ -19,6 +21,14 @@ public class PlayerCam : MonoBehaviour
     }
 
     private void Update()
+    {
+        Debug.Log(active + "Cam");
+
+        if(active)
+         Cam();
+    }
+
+    private void Cam()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
