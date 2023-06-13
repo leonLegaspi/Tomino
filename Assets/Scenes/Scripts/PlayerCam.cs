@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    [HideInInspector] public bool active = true;
+    [HideInInspector] public bool active;
 
     public  float     sensX;
     public  float     sensY;
@@ -16,6 +16,7 @@ public class PlayerCam : MonoBehaviour
 
     private void Start()
     {
+        active = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

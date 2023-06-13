@@ -5,6 +5,7 @@ using System.Collections;
 public class Dialogue : MonoBehaviour
 {
     public PlayerCam playerCam;
+    public MovPlayer movPlayer;
 
     private bool isPlayerRange;
     private bool didDialogueStart;
@@ -57,6 +58,7 @@ public class Dialogue : MonoBehaviour
     private void StartDialogue()
     {
         playerCam.active = false;
+        movPlayer.activo = false;
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
         lineIndex = 0;
@@ -83,7 +85,8 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            playerCam.active = true;    
+            playerCam.active = true;  
+            movPlayer.activo = true;
             didDialogueStart = false;
             dialoguePanel.SetActive(false);
         }

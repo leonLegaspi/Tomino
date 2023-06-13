@@ -26,17 +26,21 @@ public class MovPlayer : MonoBehaviour
     [SerializeField] private AudioSource caminar;
     [SerializeField] private AudioClip [] audioCaminar;
 
+    [HideInInspector] public bool activo;
+
    
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
         velocidadSprint = velocidadDeMovimiento * velocidadSprint;
+        activo = true;
     }
 
     private void Update()
-    {   
-        Movimiento();
+    { 
+        if(activo) 
+         Movimiento();
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
