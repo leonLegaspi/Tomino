@@ -22,8 +22,6 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(active + "Cam");
-
         if(active)
          Cam();
     }

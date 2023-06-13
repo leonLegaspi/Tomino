@@ -8,7 +8,6 @@ public class Dialogue : MonoBehaviour
 
     private bool isPlayerRange;
     private bool didDialogueStart;
-    private bool cam;
 
     private int lineIndex;
 
@@ -57,8 +56,7 @@ public class Dialogue : MonoBehaviour
 
     private void StartDialogue()
     {
-        cam = false;
-        playerCam.active = cam;
+        playerCam.active = false;
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
         lineIndex = 0;
@@ -85,8 +83,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            cam = true;
-            playerCam.active = cam;    
+            playerCam.active = true;    
             didDialogueStart = false;
             dialoguePanel.SetActive(false);
         }
