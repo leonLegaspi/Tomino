@@ -10,7 +10,7 @@ public class MovPlayer : MonoBehaviour
     public new Transform camera;
 
     [SerializeField] private float velocidadDeMovimiento;
-    [SerializeField] private float velocidadSprint;
+                     private float velocidadSprint = 2;
     [SerializeField] private float suavizadoMovimiento;
     [SerializeField] private float radio;
     
@@ -28,30 +28,42 @@ public class MovPlayer : MonoBehaviour
 
     [HideInInspector] public bool activo;
 
-   
 
+    private void Awake()
+    {
+        velocidadSprint = velocidadDeMovimiento * velocidadSprint;
+    }
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-        velocidadSprint = velocidadDeMovimiento * velocidadSprint;
         activo = true;
     }
 
     private void Update()
     { 
-        if(activo) 
-         Movimiento();
+        if(activo)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+                Movimiento(velocidadSprint);
+
+            else
+                Movimiento(velocidadDeMovimiento);
+
+        }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
+
+        
     }
 
-    private void Movimiento()
+    private void Movimiento(float velocidad)
     {
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
+
         Vector3 movement = Vector3.zero;
         float movementSpeed = 2;
 
@@ -88,7 +100,7 @@ public class MovPlayer : MonoBehaviour
             movementSpeed = Mathf.Clamp01(direction.magnitude);
             direction.Normalize();
 
-            movement = direction * velocidadDeMovimiento * movementSpeed * Time.deltaTime;
+            movement = direction * velocidad * movementSpeed * Time.deltaTime;
 
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), suavizadoMovimiento);
         }
